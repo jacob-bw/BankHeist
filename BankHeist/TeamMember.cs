@@ -15,9 +15,14 @@ namespace BankHeist
             get => _skillLevel;
             set
             {
-                if (value > 0)
+                if (value >= 0 && value <= 100)
                 {
                     _skillLevel = value;
+                }
+                else
+                {
+                    _skillLevel = 50;
+                    Console.WriteLine("Can't blame you for trying. You're not that slick, though.");
                 }
             }
         }
@@ -34,6 +39,7 @@ namespace BankHeist
                 else
                 {
                     _courageFactor = 1.0;
+                    Console.WriteLine("Why are the brave ones also so dumb?");
                 }
             }
         }

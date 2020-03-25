@@ -13,7 +13,7 @@ namespace BankHeist
             var teamMember = new TeamMember(Console.ReadLine());
 
 
-            Console.WriteLine("How skilled is this person at committing heists? (please enter a number larger than zero)");
+            Console.WriteLine("How skilled is this person at committing heists? (please enter a number between 0 and 100)");
             teamMember.SkillLevel = Convert.ToInt32(Console.ReadLine());
 
 
