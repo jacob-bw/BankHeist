@@ -6,47 +6,39 @@ namespace BankHeist
 {
     class TeamMember
     {
-        public string Name { get; set; }
         private int _skillLevel;
-        private double _courageFactor;
-
-        public int SkillLevel
-        {
+        private decimal _courageFactor;
+        public string Name { get; set; }
+        public int SkillLevel {
             get => _skillLevel;
             set
             {
-                if (value >= 0 && value <= 100)
+                if (value > 0)
                 {
                     _skillLevel = value;
-                }
-                else
-                {
-                    _skillLevel = 50;
-                    Console.WriteLine("Can't blame you for trying. You're not that slick, though.");
-                }
+                }  
             }
         }
-
-        public double CourageFactor
-        {
+        public decimal CourageFactor {
             get => _courageFactor;
             set
             {
-                if (value >= 0.0 &&  value <= 2.0)
+                if (value >= 0.0m && value <= 2.0m)
                 {
                     _courageFactor = value;
                 }
                 else
                 {
-                    _courageFactor = 1.0;
-                    Console.WriteLine("Why are the brave ones also so dumb?");
+                    _courageFactor = 3.0m;
                 }
             }
         }
 
-        public TeamMember(string name)
+        public TeamMember(string name, int skillLevel, decimal courageFactor)
         {
             Name = name;
+            SkillLevel = skillLevel;
+            CourageFactor = courageFactor;
         }
     }
 }
