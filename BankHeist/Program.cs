@@ -73,12 +73,16 @@ namespace BankHeist
 
                 if (total >= finalBankValue)
                 {
+                    Console.ForegroundColor = ConsoleColor.Green;
                     Console.WriteLine("You've successfully infiltrated the bank.");
+                    Console.ResetColor();
                     successfulHeists += 1;
                 }
                 else
                 {
+                    Console.ForegroundColor = ConsoleColor.Red;
                     Console.WriteLine("Your team's skill level was not high enough this time. Try again.");
+                    Console.ResetColor();
                 }
             }
 
