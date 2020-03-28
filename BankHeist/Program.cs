@@ -9,7 +9,7 @@ namespace BankHeist
         static void Main(string[] args)
         {
 
-            List<TeamMember> iceSquad = new List<TeamMember>();
+            List<TeamMember> oceansEleven = new List<TeamMember>();
 
             Console.WriteLine("Plan Your Heist! Please enter a bank difficulty level.");
 
@@ -40,15 +40,15 @@ namespace BankHeist
                     teamMemberCourageFactor = Convert.ToDecimal(Console.ReadLine());
                 }
 
-                iceSquad.Add(new TeamMember(teamMemberName, teamMemberSkillLevel, teamMemberCourageFactor));
+                oceansEleven.Add(new TeamMember(teamMemberName, teamMemberSkillLevel, teamMemberCourageFactor));
                 Console.WriteLine("Would you like to add another team member? (y/n)");
                 addAnother = Console.ReadLine();
             } while (addAnother == "y");
 
             Console.Clear();
-            Console.WriteLine($"You have {iceSquad.Count} team members.");
+            Console.WriteLine($"You have {oceansEleven.Count} team members.");
 
-            foreach (var member in iceSquad)
+            foreach (var member in oceansEleven)
             {
                 Console.WriteLine($"Your team member, {member.Name}, has a skill level of {member.SkillLevel} and a courage factor of {member.CourageFactor}");
                 Console.ReadLine();
@@ -67,7 +67,7 @@ namespace BankHeist
                 var bankLuck = rnd.Next(-10, 10);
                 var finalBankValue = bankLuck + bankValue;
 
-                var total = iceSquad.Sum(member => member.SkillLevel);
+                var total = oceansEleven.Sum(member => member.SkillLevel);
 
                 Console.WriteLine($"Your team's combined skill level is {total}. The bank's difficulty level is {finalBankValue}.");
 
@@ -82,8 +82,24 @@ namespace BankHeist
                 }
             }
 
-            Console.WriteLine($"You successfully completed {successfulHeists} heists and failed {scenarioLimit - successfulHeists}.");
-            Console.ReadLine();
+            if (successfulHeists > (scenarioLimit - successfulHeists))
+            {
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.WriteLine($"You successfully completed {successfulHeists} heists and failed {scenarioLimit - successfulHeists}.");
+                Console.ReadLine();
+            }
+            else if (successfulHeists < (scenarioLimit - successfulHeists))
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine($"You successfully completed {successfulHeists} heists and failed {scenarioLimit - successfulHeists}.");
+                Console.ReadLine();
+            }
+            else
+            {
+                Console.WriteLine($"You successfully completed {successfulHeists} heists and failed {scenarioLimit - successfulHeists}.");
+                Console.ReadLine();
+            }
+
         }
     }
 }
